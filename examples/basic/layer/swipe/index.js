@@ -38,6 +38,10 @@ renderer.getCanvasImage = function () {
   if (width <= 0) {
     return layerImage;
   }
+  // layerImage.image（源图）首帧也可能仍是 0 尺寸 canvas，drawImage 会报错，跳过
+  if (!layerImage.image.width || !layerImage.image.height) {
+    return layerImage;
+  }
 
   // copy drawn rect of original layer canvas
   const drawnRect = document.createElement("canvas");
