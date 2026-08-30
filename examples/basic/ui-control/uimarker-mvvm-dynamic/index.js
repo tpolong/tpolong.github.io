@@ -10,10 +10,9 @@ function randomCoordinates(map) {
   return coordinates;
 }
 
-const vm = new window.Vue({
-  el: "#app",
-  data: {
-
+const vm = window.Vue.createApp({
+  data: function () {
+    return {};
   },
   watch: {},
   methods: {
@@ -34,7 +33,7 @@ const vm = new window.Vue({
 
 
     randomCoordinates(map).map((c, index) => {
-      var Profile = Vue.extend({
+      var Profile = {
         template: `<div class="profile">  
                     <input type="checkbox" v-model='checked'/><label>show btns</label><br>
                      <button @click="add">++1</button><br>
@@ -55,8 +54,8 @@ const vm = new window.Vue({
             this.btns.push(1);
           }
         }
-      });
-      const profile = new Profile().$mount();
+      };
+      const profile = window.Vue.createApp(Profile).mount(document.createElement("div"));
       console.log(profile);
       var uiMarker = new maptalks.ui.UIMarker(c, {
         content: profile.$el,
@@ -69,4 +68,4 @@ const vm = new window.Vue({
 
     });
   },
-});
+}).mount("#app");

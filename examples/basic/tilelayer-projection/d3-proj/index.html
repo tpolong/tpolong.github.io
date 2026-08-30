@@ -4,7 +4,7 @@
 
 <script type="module">
   import * as maptalks from "maptalks";
-  import * as d3 from "d3";
+  import d3 from "d3v4";
   window.d3 = d3;
   import * as topojson from "topojson-client";
   window.topojson = topojson;
@@ -17,6 +17,10 @@
   const proj = {
     project: function (c) {
       const pc = projection([c.x, c.y]);
+      // orthographic 投影对背面/极点可能返回 null，兜底返回原坐标，避免 null[0] 崩溃
+      if (!pc || isNaN(pc[0]) || isNaN(pc[1])) {
+        return new maptalks.Coordinate(c.x, c.y);
+      }
       return new maptalks.Coordinate(pc[0], pc[1]);
     },
     unproject: function (pc) {
@@ -37,44 +41,48 @@
       bottom: min.y,
     };
 
-  d3.json("{res}/geojson/world-50m.json")
-    .then(function (world) {
-    // initialize map with a customized projection
-    const map = new maptalks.Map("map", {
-      center: [0, 0],
-      centerCross: true,
-      zoom: 2,
-      spatialReference: {
-        projection: proj,
-        resolutions: (function () {
-          const resolutions = [];
-          for (let i = 0; i < 10; i++) {
-            resolutions[i] = 4 / Math.pow(2, i);
-          }
-          return resolutions;
-        })(),
-        fullExtent: fullExtent,
-      },
-    });
-    const featureCollection = topojson.feature(world, world.objects.countries),
-      geometries = maptalks.GeoJSON.toGeometry(featureCollection);
-    const symbol = {
-      lineColor: "#fff",
-      lineWidth: 0.5,
-      polygonOpacity: 1,
-      polygonFill: "#747474",
-    };
-    new maptalks.VectorLayer("v", geometries, {
-      geometryEvents: false,
-      enableSimplify: false,
+  // REPL iframe 里 d3 v4 的 d3.json（XHR）会报错，改用 fetch 加载 GeoJSON
+  fetch("{res}/geojson/world-50m.json")
+    .then(function (res) {
+      return res.json();
     })
-      .forEach(function (geo) {
-        geo.setSymbol(symbol);
+    .then(function (world) {
+      // initialize map with a customized projection
+      const map = new maptalks.Map("map", {
+        center: [0, 0],
+        centerCross: true,
+        zoom: 2,
+        spatialReference: {
+          projection: proj,
+          resolutions: (function () {
+            const resolutions = [];
+            for (let i = 0; i < 10; i++) {
+              resolutions[i] = 4 / Math.pow(2, i);
+            }
+            return resolutions;
+          })(),
+          fullExtent: fullExtent,
+        },
+      });
+      const featureCollection = topojson.feature(world, world.objects.countries),
+        geometries = maptalks.GeoJSON.toGeometry(featureCollection);
+      const symbol = {
+        lineColor: "#fff",
+        lineWidth: 0.5,
+        polygonOpacity: 1,
+        polygonFill: "#747474",
+      };
+      new maptalks.VectorLayer("v", geometries, {
+        geometryEvents: false,
+        enableSimplify: false,
       })
-      .addTo(map);
-  })
-    .catch(function (error) {
-      throw error;
+        .forEach(function (geo) {
+          geo.setSymbol(symbol);
+        })
+        .addTo(map);
+    })
+    .catch(function (err) {
+      throw err;
     });
 </script>
 

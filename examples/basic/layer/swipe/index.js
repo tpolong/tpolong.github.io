@@ -33,6 +33,11 @@ renderer.getCanvasImage = function () {
   const ctx = renderer.context;
   const width = renderer.canvas.width * (swipe.value / 100);
   const height = ctx.canvas.height;
+  // 首帧或滑块为 0 时 layer 画布尚未定尺寸，width 可能为 0，跳过本次绘制避免
+  // drawImage 0 宽 canvas 报错
+  if (width <= 0) {
+    return layerImage;
+  }
 
   // copy drawn rect of original layer canvas
   const drawnRect = document.createElement("canvas");

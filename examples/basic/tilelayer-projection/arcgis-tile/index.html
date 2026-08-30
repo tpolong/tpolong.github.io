@@ -1,33 +1,46 @@
 <div id="map" class="container"></div>
 
 <script type="module">
-  import { Map, SpatialReference, TileLayer } from "maptalks";
+  import { Map, TileLayer } from "maptalks";
 
   const arcUrl =
     "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer";
 
-  SpatialReference.loadArcgis(arcUrl + "?f=pjson", function (err, conf) {
-    if (err) {
-      throw new Error(err);
-    }
-    const ref = conf.spatialReference;
-    ref.projection = "EPSG:3857";
-    ref.fullExtent = null;
-    const map = new Map("map", {
-      center: [121, 0],
-      zoom: 1,
-      minZoom: 1,
-      maxZoom: 16,
-      spatialReference: ref,
-      baseLayer: new TileLayer("base", {
-        tileSystem: conf.tileSystem,
-        tileSize: conf.tileSize,
-        urlTemplate: arcUrl + "/tile/{z}/{y}/{x}",
-        attribution:
-          '&copy; <a target="_blank" href="' + arcUrl + '"">ArcGIS</a>',
-      }),
+  // REPL 预览 iframe 里 maptalks 默认的 loadArcgis(JSONP) 会静默失败（脚本回调不触发），
+  // 这里改用 fetch（ArcGIS 服务返回 Access-Control-Allow-Origin: *，允许 CORS）拉取元数据，
+  // 并按 maptalks SpatialReference.loadArcgis 的 parse 逻辑构造空间参考与瓦片系统。
+  fetch(arcUrl + "?f=json")
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (json) {
+      const tileInfo = json.tileInfo;
+      const resolutions = [];
+      for (let i = 0; i < tileInfo.lods.length; i++) {
+        resolutions.push(tileInfo.lods[i].resolution);
+      }
+      const ref = {
+        resolutions: resolutions,
+        projection: "EPSG:3857",
+        fullExtent: null,
+      };
+      const map = new Map("map", {
+        center: [121, 0],
+        zoom: 1,
+        minZoom: 1,
+        maxZoom: 16,
+        spatialReference: ref,
+        baseLayer: new TileLayer("base", {
+          tileSystem: [1, -1, tileInfo.origin.x, tileInfo.origin.y],
+          tileSize: [tileInfo.cols, tileInfo.rows],
+          urlTemplate: arcUrl + "/tile/{z}/{y}/{x}",
+          attribution: '&copy; <a target="_blank" href="' + arcUrl + '">ArcGIS</a>',
+        }),
+      });
+    })
+    .catch(function (err) {
+      throw err;
     });
-  });
 </script>
 
 <style>

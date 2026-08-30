@@ -16,12 +16,12 @@
       "ambient": {
         "resource": {
           "url": {
-            "front": "/resources/msd/drawer-entity/res/temp-resources/dev/hdr/446/446e15de-7d39-40bb-82a5-94ed304675d3/front.jpg",
-            "back": "/resources/msd/drawer-entity/res/temp-resources/dev/hdr/446/446e15de-7d39-40bb-82a5-94ed304675d3/back.jpg",
-            "left": "/resources/msd/drawer-entity/res/temp-resources/dev/hdr/446/446e15de-7d39-40bb-82a5-94ed304675d3/left.jpg",
-            "right": "/resources/msd/drawer-entity/res/temp-resources/dev/hdr/446/446e15de-7d39-40bb-82a5-94ed304675d3/right.jpg",
-            "top": "/resources/msd/drawer-entity/res/temp-resources/dev/hdr/446/446e15de-7d39-40bb-82a5-94ed304675d3/top.jpg",
-            "bottom": "/resources/msd/drawer-entity/res/temp-resources/dev/hdr/446/446e15de-7d39-40bb-82a5-94ed304675d3/bottom.jpg"
+            "front": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/hdr/446/446e15de-7d39-40bb-82a5-94ed304675d3/front.jpg",
+            "back": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/hdr/446/446e15de-7d39-40bb-82a5-94ed304675d3/back.jpg",
+            "left": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/hdr/446/446e15de-7d39-40bb-82a5-94ed304675d3/left.jpg",
+            "right": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/hdr/446/446e15de-7d39-40bb-82a5-94ed304675d3/right.jpg",
+            "top": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/hdr/446/446e15de-7d39-40bb-82a5-94ed304675d3/top.jpg",
+            "bottom": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/hdr/446/446e15de-7d39-40bb-82a5-94ed304675d3/bottom.jpg"
           },
           "prefilterCubeSize": 512
         },
@@ -76,7 +76,7 @@
                     "ssr": false,
                     "polygonOpacity": 0.6,
                     "material": {
-                      "baseColorTexture": "/resources/msd/drawer-entity/res/temp-resources/dev/texture/429/429e4254-dc5a-49c8-b79b-c9365ea52c73/webp%20(8).jpg",
+                      "baseColorTexture": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/texture/429/429e4254-dc5a-49c8-b79b-c9365ea52c73/webp%20(8).jpg",
                       "baseColorFactor": [
                         0.3137254901960784, 0.30980392156862746, 0.3137254901960784, 1
                       ],
@@ -102,7 +102,7 @@
                       "clearCoatIor": 1.4,
                       "clearCoatRoughnessFactor": 0.04,
                       "occlusionTexture": null,
-                      "emissiveTexture": "/resources/msd/drawer-entity/res/temp-resources/dev/texture/bc4/bc4df6ac-931b-47fd-a2ee-7217c7026a61/webp%20(6).jpg",
+                      "emissiveTexture": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/texture/bc4/bc4df6ac-931b-47fd-a2ee-7217c7026a61/webp%20(6).jpg",
                       "emissiveFactor": [0, 0, 0],
                       "emitColorFactor": 0.27,
                       "emitMultiplicative": 0,
@@ -146,10 +146,10 @@
                       "baseColorIntensity": 1,
                       "contrast": 1,
                       "outputSRGB": 1,
-                      "metallicRoughnessTexture": "/resources/msd/drawer-entity/res/temp-resources/dev/material/72c/72cfe359-cbf7-4348-92df-01ccf2790af7/2.jpg",
+                      "metallicRoughnessTexture": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/material/72c/72cfe359-cbf7-4348-92df-01ccf2790af7/2.jpg",
                       "roughnessFactor": 0.29,
                       "metallicFactor": 1,
-                      "normalTexture": "/resources/msd/drawer-entity/res/temp-resources/dev/material/72c/72cfe359-cbf7-4348-92df-01ccf2790af7/213746px1q8gsg18lgmqys.png",
+                      "normalTexture": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/material/72c/72cfe359-cbf7-4348-92df-01ccf2790af7/213746px1q8gsg18lgmqys.png",
                       "noiseTexture": null,
                       "uvScale": [1, 1],
                       "uvOffset": [0, 0],
@@ -468,7 +468,7 @@
                     "ssr": false,
                     "polygonOpacity": 1,
                     "material": {
-                      "baseColorTexture": "/resources/msd/drawer-entity/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_basecolor.jpg",
+                      "baseColorTexture": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_basecolor.jpg",
                       "baseColorFactor": [1, 1, 1, 1],
                       "hsv": [0, 0, -0.022],
                       "baseColorIntensity": 1,
@@ -477,7 +477,7 @@
                       "metallicRoughnessTexture": null,
                       "roughnessFactor": 0.79,
                       "metallicFactor": 0,
-                      "normalTexture": "/resources/msd/drawer-entity/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_normalOgl.jpg",
+                      "normalTexture": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_normalOgl.jpg",
                       "noiseTexture": null,
                       "uvScale": [1, 1],
                       "uvOffset": [0, 0],
@@ -491,7 +491,7 @@
                       "clearCoatFactor": 0,
                       "clearCoatIor": 1.4,
                       "clearCoatRoughnessFactor": 0.04,
-                      "occlusionTexture": "/resources/msd/drawer-entity/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_ambientocclusion.jpg",
+                      "occlusionTexture": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_ambientocclusion.jpg",
                       "emissiveTexture": null,
                       "emissiveFactor": [0, 0, 0],
                       "emitColorFactor": 1,
@@ -510,8 +510,8 @@
                   },
                   "symbol": {
                     "ssr": true,
-                    "texWaveNormal": "/resources/msd/drawer-entity/res/temp-resources/dev/water/463/463a5930-0280-cfcc-ca93-d3ea8acae553/normal.png",
-                    "texWavePerturbation": "/resources/msd/drawer-entity/res/temp-resources/dev/water/06f/06faa462-d7fd-e85c-f803-f642b743b54f/perturbation.png",
+                    "texWaveNormal": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/water/463/463a5930-0280-cfcc-ca93-d3ea8acae553/normal.png",
+                    "texWavePerturbation": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/water/06f/06faa462-d7fd-e85c-f803-f642b743b54f/perturbation.png",
                     "waterBaseColor": [
                       0.3215686274509804, 0.47843137254901963, 0.611764705882353, 1
                     ],
@@ -703,7 +703,7 @@
                   "bloom": false,
                   "ssr": false,
                   "shadow": true,
-                  "url": "/resources/msd/drawer-entity/res/temp-resources/dev/gltf-model/4b3/4b30bf75-a841-47fd-9d10-d9b945ee279e/scene.gltf",
+                  "url": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/gltf-model/4b3/4b30bf75-a841-47fd-9d10-d9b945ee279e/scene.gltf",
                   "animation": true,
                   "animationName": null,
                   "loop": true,
@@ -741,7 +741,7 @@
                   "bloom": false,
                   "ssr": false,
                   "shadow": true,
-                  "url": "/resources/msd/drawer-entity/res/temp-resources/dev/gltf-model/4b3/4b30bf75-a841-47fd-9d10-d9b945ee279e/scene.gltf",
+                  "url": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/gltf-model/4b3/4b30bf75-a841-47fd-9d10-d9b945ee279e/scene.gltf",
                   "animation": true,
                   "animationName": null,
                   "loop": true,
@@ -773,7 +773,7 @@
                   "bloom": false,
                   "ssr": false,
                   "shadow": true,
-                  "url": "/resources/msd/drawer-entity/res/temp-resources/dev/gltf-model/d6f/d6f48c98-6067-4bd9-b0c8-1ab1b32f0375/scene.gltf",
+                  "url": "/examples/resources/msd/drawer-entity/res/temp-resources/dev/gltf-model/d6f/d6f48c98-6067-4bd9-b0c8-1ab1b32f0375/scene.gltf",
                   "animation": true,
                   "animationName": null,
                   "loop": true,

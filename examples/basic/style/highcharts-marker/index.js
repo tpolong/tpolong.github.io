@@ -1,4 +1,4 @@
-import * as Highcharts from "highcharts";
+import Highcharts from "highcharts";
 window.Highcharts = Highcharts;
 
 const map = new maptalks.Map("map", {

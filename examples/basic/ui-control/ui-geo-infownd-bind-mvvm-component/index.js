@@ -1,11 +1,12 @@
 // eslint-disable-next-line no-unused-vars
-const vm = new window.Vue({
-  el: "#app",
-  data: {
-    show: false,
-    count: 1,
-    name: "Hello Maptalks",
-    btns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+const vm = window.Vue.createApp({
+  data: function () {
+    return {
+      show: false,
+      count: 1,
+      name: "Hello Maptalks",
+      btns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    };
   },
   watch: {},
   methods: {
@@ -33,4 +34,4 @@ const vm = new window.Vue({
     });
     marker.openInfoWindow();
   },
-});
+}).mount("#app");

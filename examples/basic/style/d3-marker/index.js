@@ -1,3 +1,8 @@
+// d3-marker 使用 d3 v3 的 API（d3.geom.quadtree / d3.svg / d3.scale.identity），
+// import map 默认的 d3 v7 没有这些，故单独使用 d3v3
+import d3 from "d3v3";
+window.d3 = d3;
+
 const map = new maptalks.Map("map", {
   center: [-0.113049, 51.49856],
   zoom: 14,

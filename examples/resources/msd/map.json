@@ -16,12 +16,12 @@
       "ambient": {
         "resource": {
           "url": {
-            "front": "/resources/msd/res/temp-resources/dev/hdr/923/923d179b-91ff-4159-9030-8e3efbf8c745/front.jpg",
-            "back": "/resources/msd/res/temp-resources/dev/hdr/923/923d179b-91ff-4159-9030-8e3efbf8c745/back.jpg",
-            "left": "/resources/msd/res/temp-resources/dev/hdr/923/923d179b-91ff-4159-9030-8e3efbf8c745/left.jpg",
-            "right": "/resources/msd/res/temp-resources/dev/hdr/923/923d179b-91ff-4159-9030-8e3efbf8c745/right.jpg",
-            "top": "/resources/msd/res/temp-resources/dev/hdr/923/923d179b-91ff-4159-9030-8e3efbf8c745/top.jpg",
-            "bottom": "/resources/msd/res/temp-resources/dev/hdr/923/923d179b-91ff-4159-9030-8e3efbf8c745/bottom.jpg"
+            "front": "/examples/resources/msd/res/temp-resources/dev/hdr/923/923d179b-91ff-4159-9030-8e3efbf8c745/front.jpg",
+            "back": "/examples/resources/msd/res/temp-resources/dev/hdr/923/923d179b-91ff-4159-9030-8e3efbf8c745/back.jpg",
+            "left": "/examples/resources/msd/res/temp-resources/dev/hdr/923/923d179b-91ff-4159-9030-8e3efbf8c745/left.jpg",
+            "right": "/examples/resources/msd/res/temp-resources/dev/hdr/923/923d179b-91ff-4159-9030-8e3efbf8c745/right.jpg",
+            "top": "/examples/resources/msd/res/temp-resources/dev/hdr/923/923d179b-91ff-4159-9030-8e3efbf8c745/top.jpg",
+            "bottom": "/examples/resources/msd/res/temp-resources/dev/hdr/923/923d179b-91ff-4159-9030-8e3efbf8c745/bottom.jpg"
           }
         },
         "exposure": 0.787,
@@ -61,8 +61,8 @@
                   },
                   "symbol": {
                     "ssr": true,
-                    "texWaveNormal": "/resources/msd/res/temp-resources/dev/water/463/463a5930-0280-cfcc-ca93-d3ea8acae553/normal.png",
-                    "texWavePerturbation": "/resources/msd/res/temp-resources/dev/water/06f/06faa462-d7fd-e85c-f803-f642b743b54f/perturbation.png",
+                    "texWaveNormal": "/examples/resources/msd/res/temp-resources/dev/water/463/463a5930-0280-cfcc-ca93-d3ea8acae553/normal.png",
+                    "texWavePerturbation": "/examples/resources/msd/res/temp-resources/dev/water/06f/06faa462-d7fd-e85c-f803-f642b743b54f/perturbation.png",
                     "waterBaseColor": [0.7254901960784313, 0.8196078431372549, 1, 1],
                     "contrast": 1.266,
                     "hsv": [0, 0, 0],
@@ -97,16 +97,16 @@
                     "ssr": false,
                     "polygonOpacity": 1,
                     "material": {
-                      "baseColorTexture": "/resources/msd/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_basecolor.jpg",
+                      "baseColorTexture": "/examples/resources/msd/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_basecolor.jpg",
                       "baseColorFactor": [1, 1, 1, 1],
                       "hsv": [0, -0.255, 0.383],
                       "baseColorIntensity": 1,
                       "contrast": 1,
                       "outputSRGB": 1,
-                      "metallicRoughnessTexture": "/resources/msd/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_roughness.jpg",
+                      "metallicRoughnessTexture": "/examples/resources/msd/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_roughness.jpg",
                       "roughnessFactor": 1,
                       "metallicFactor": 1,
-                      "normalTexture": "/resources/msd/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_normalOgl.jpg",
+                      "normalTexture": "/examples/resources/msd/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_normalOgl.jpg",
                       "noiseTexture": null,
                       "uvScale": [0.18, 0.18],
                       "uvOffset": [0, 0],
@@ -120,7 +120,7 @@
                       "clearCoatFactor": 0,
                       "clearCoatIor": 1.4,
                       "clearCoatRoughnessFactor": 0.04,
-                      "occlusionTexture": "/resources/msd/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_ambientocclusion.jpg",
+                      "occlusionTexture": "/examples/resources/msd/res/temp-resources/dev/material/ec8/ec8e7601-78e9-4292-96e3-bc65be01bc3c/Stylized_15_Grass_ambientocclusion.jpg",
                       "emissiveTexture": null,
                       "emissiveFactor": [0, 0, 0],
                       "emitColorFactor": 1,
@@ -680,7 +680,7 @@
                       "clearCoatIor": 1.4,
                       "clearCoatRoughnessFactor": 0.04,
                       "occlusionTexture": null,
-                      "emissiveTexture": "/resources/msd/res/temp-resources/dev/texture/897/897effa0-1897-4c1c-9aa0-66840a8e0218/1.jpg",
+                      "emissiveTexture": "/examples/resources/msd/res/temp-resources/dev/texture/897/897effa0-1897-4c1c-9aa0-66840a8e0218/1.jpg",
                       "emissiveFactor": [
                         0.9333333333333333, 0.9254901960784314, 0.9607843137254902
                       ],
@@ -1062,7 +1062,7 @@
                     "lineJoin": "round",
                     "lineOpacity": 1,
                     "linePatternAnimSpeed": 0,
-                    "linePatternFile": "/resources/msd/res/temp-resources/dev/line-pattern/d4b/d4beb047-2a7f-4802-af26-e47357967c2c/default.jpg",
+                    "linePatternFile": "/examples/resources/msd/res/temp-resources/dev/line-pattern/d4b/d4beb047-2a7f-4802-af26-e47357967c2c/default.jpg",
                     "lineStrokeWidth": 0,
                     "lineStrokeColor": [1, 1, 1, 1],
                     "lineJoinPatternMode": 0,
@@ -1134,7 +1134,7 @@
                     "lineJoin": "miter",
                     "lineOpacity": 1,
                     "linePatternAnimSpeed": 0,
-                    "linePatternFile": "/resources/msd/res/temp-resources/dev/line-pattern/d4b/d4beb047-2a7f-4802-af26-e47357967c2c/default.jpg",
+                    "linePatternFile": "/examples/resources/msd/res/temp-resources/dev/line-pattern/d4b/d4beb047-2a7f-4802-af26-e47357967c2c/default.jpg",
                     "lineStrokeWidth": 0,
                     "lineStrokeColor": [0, 0, 0, 1],
                     "lineJoinPatternMode": 0,
@@ -1299,7 +1299,7 @@
                       "clearCoatIor": 1.4,
                       "clearCoatRoughnessFactor": 0.04,
                       "occlusionTexture": null,
-                      "emissiveTexture": "/resources/msd/res/temp-resources/dev/texture/897/897effa0-1897-4c1c-9aa0-66840a8e0218/1.jpg",
+                      "emissiveTexture": "/examples/resources/msd/res/temp-resources/dev/texture/897/897effa0-1897-4c1c-9aa0-66840a8e0218/1.jpg",
                       "emissiveFactor": [0, 0, 0],
                       "emitColorFactor": 5,
                       "emitMultiplicative": 0
