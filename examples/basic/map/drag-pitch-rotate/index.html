@@ -1,0 +1,32 @@
+<div id="map" class="container"></div>
+<div class="pane">
+  Drag with Ctrl + left mouse or right mouse to tilt and rotate map
+</div>
+
+<script type="module">
+  import { Map, TileLayer, VectorLayer } from "maptalks";
+
+  const map = new Map("map", {
+    center: [-0.113049, 51.498568],
+    zoom: 14,
+    // allow map to drag pitching, true by default
+    dragPitch: true,
+    // allow map to drag rotating, true by default
+    dragRotate: true,
+    // enable map to drag pitching and rotating at the same time, false by default
+    dragRotatePitch: true,
+    baseLayer: new TileLayer("base", {
+      urlTemplate:
+        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+      subdomains: ["a", "b", "c", "d"],
+      attribution:
+        "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+    }),
+    layers: [new VectorLayer("v")],
+  });
+</script>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>

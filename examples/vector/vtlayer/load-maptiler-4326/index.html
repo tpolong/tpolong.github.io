@@ -1,0 +1,25 @@
+<script type="module">
+  import * as gl from "gl-layers";
+  import * as maptalks from "maptalks";
+
+  const token = "uKYsZQZpm72WlbSgH9B7";
+
+  const map = new maptalks.Map("map", {
+    center: [-74.00912099912109, 40.71107610933129],
+    zoom: 12,
+    spatialReference: "EPSG:4326",
+  });
+
+  const vt = new gl.VectorTileLayer("vt", {
+    urlTemplate: `https://api.maptiler.com/tiles/v3-4326/{z}/{x}/{y}.pbf?key=${token}`,
+  });
+
+  const group = new gl.GroupGLLayer("group", [vt]).addTo(map);
+</script>
+
+<div id="map" class="container"></div>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>

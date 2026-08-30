@@ -1,0 +1,61 @@
+<div id="map" class="container"></div>
+
+<script type="module">
+  import { Map, WMSTileLayer } from "maptalks";
+
+  import { GUI } from "mt.gui";
+
+  const map = new Map("map", {
+    center: [-100.43074996462228, 37.69212817202581],
+    zoom: 4,
+    spatialReference: {
+      projection: "EPSG:4326",
+    },
+    baseLayer: new WMSTileLayer("wms", {
+      tileSystem: [1, -1, -180, 90],
+      urlTemplate: "https://ows.terrestris.de/osm/service",
+      crs: "EPSG:4326",
+      layers: "OSM-WMS",
+      styles: "",
+      version: "1.3.0",
+      format: "image/png",
+      transparent: true,
+      uppercase: true,
+    }),
+    attribution: {
+      content: "&copy ows.terrestris.de",
+    },
+  });
+
+  let isTerrestris = true;
+  function reload() {
+    const baseLayer = map.getBaseLayer();
+    const options = baseLayer.options;
+    if (!isTerrestris) {
+      options.urlTemplate = "https://ows.terrestris.de/osm/service";
+      options.layers = "OSM-WMS";
+    } else {
+      options.urlTemplate = "https://ahocevar.com/geoserver/wms";
+      options.layers = "topp:states";
+    }
+    baseLayer.forceReload();
+    isTerrestris = !isTerrestris;
+  }
+
+  const gui = new GUI();
+  gui
+    .add({
+      type: "button",
+      text: "reload tilelayer",
+    })
+    .onClick(() => {
+      // fit map's extent to polygon's
+      // 0 is the zoom offset
+      reload();
+    });
+</script>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>

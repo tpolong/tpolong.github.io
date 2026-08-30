@@ -1,0 +1,53 @@
+<div id="map" class="container"></div>
+<div id="status"></div>
+
+<script type="module">
+  import { Map, Marker, TileLayer, VectorLayer, control } from "maptalks";
+
+  const map = new Map("map", {
+    center: [-0.113049, 51.498568],
+    zoom: 14,
+    centerCross: true,
+    baseLayer: new TileLayer("base", {
+      urlTemplate:
+        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+      subdomains: ["a", "b", "c", "d"],
+      attribution:
+        "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+    }),
+  });
+
+  map.on("zoomend moving moveend", getStatus);
+
+  getStatus();
+
+  function getStatus() {
+    const extent = map.getExtent(),
+      ex = [
+        "{",
+        "xmin:" + extent.xmin.toFixed(5),
+        ", ymin:" + extent.ymin.toFixed(5),
+        ", xmax:" + extent.xmax.toFixed(5),
+        ", ymax:" + extent.xmax.toFixed(5),
+        "}",
+      ].join("");
+    const center = map.getCenter();
+    const mapStatus = [
+      "Center : [" + [center.x.toFixed(5), center.y.toFixed(5)].join() + "]",
+      "Extent : " + ex,
+      "Size : " + map.getSize().toArray().join(),
+      "Zoom : " + map.getZoom(),
+      "MinZoom : " + map.getMinZoom(),
+      "MaxZoom : " + map.getMaxZoom(),
+      "Projection : " + map.getProjection().code,
+    ];
+
+    document.getElementById("status").innerHTML =
+      "<div>" + mapStatus.join("<br>") + "</div>";
+  }
+</script>
+
+<style>
+  @import "https://com/api/css";
+  @import "./index.css";
+</style>

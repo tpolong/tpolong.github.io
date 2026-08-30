@@ -1,0 +1,28 @@
+<div id="map" class="container"></div>
+
+<script type="module">
+  import { Map, TileLayer, VectorLayer } from "maptalks";
+
+  const map = new Map("map", {
+    center: [-0.113049, 51.498568],
+    zoom: 14,
+    minZoom: 14, // set map's min zoom to 14
+    maxZoom: 14, // set map's max zoom to 14
+    baseLayer: new TileLayer("base", {
+      urlTemplate:
+        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+      subdomains: ["a", "b", "c", "d"],
+      attribution:
+        "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+    }),
+    layers: [new VectorLayer("v")],
+  });
+
+  // or you can set zoom limit by
+  map.setMinZoom(14).setMaxZoom(14);
+</script>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>

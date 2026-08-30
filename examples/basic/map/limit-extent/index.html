@@ -1,0 +1,37 @@
+<div id="map" class="container"></div>
+
+<script type="module">
+  import { Map, Polygon, TileLayer, VectorLayer } from "maptalks";
+
+  const map = new Map("map", {
+    center: [-0.113049, 51.498568],
+    zoom: 14,
+    centerCross: true,
+    baseLayer: new TileLayer("base", {
+      urlTemplate:
+        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+      subdomains: ["a", "b", "c", "d"],
+      attribution:
+        "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+    }),
+    layers: [new VectorLayer("v")],
+  });
+
+  const extent = map.getExtent();
+
+  // set map's max extent to map's extent at zoom 14
+  map.setMaxExtent(extent);
+
+  map.setZoom(map.getZoom() - 2, { animation: false });
+
+  map.getLayer("v").addGeometry(
+    new Polygon(extent.toArray(), {
+      symbol: { polygonOpacity: 0, lineWidth: 5 },
+    })
+  );
+</script>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>

@@ -1,0 +1,26 @@
+<script type="module">
+  import * as gl from "gl-layers";
+  import * as maptalks from "maptalks";
+
+  const map = new maptalks.Map("map", {
+    center: [10.03808, 51.199505],
+    zoom: 14,
+  });
+
+  const vtLayer = new gl.VectorTileLayer("vt", {
+    urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
+    style: "{res}/styles/maptalks-common/style.json",
+  });
+
+  const groupLayer = new gl.GroupGLLayer("group", [vtLayer]).addTo(map);
+
+  document.getElementById("info").innerHTML = JSON.stringify(vtLayer.toJSON());
+</script>
+
+<div id="map" class="container"></div>
+<div id="info"></div>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>

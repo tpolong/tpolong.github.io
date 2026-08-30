@@ -1,0 +1,33 @@
+<div id="map" class="container"></div>
+
+<script type="module">
+  import { Map, TileLayer } from "maptalks";
+
+  const map = new Map("map", {
+    center: [-0.113049, 51.498568],
+    zoom: 11,
+    attribution: {
+      content: "&copy ESRI",
+    },
+    baseLayer: new TileLayer("base", {
+      urlTemplate:
+        "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg",
+    }),
+  });
+
+  map.addLayer(
+    new TileLayer("carto", {
+      opacity: 0.6, // TileLayer's opacity, 0-1
+      urlTemplate:
+        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+      subdomains: ["a", "b", "c", "d"],
+      attribution:
+        "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+    })
+  );
+</script>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>

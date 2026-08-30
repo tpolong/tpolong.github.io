@@ -1,0 +1,55 @@
+<script type="module">
+  import * as gl from "gl-layers";
+  import * as maptalks from "maptalks";
+
+  import { GUI } from "mt.gui";
+
+  const map = new maptalks.Map("map", {
+    center: [-74.01, 40.71],
+    zoom: 16,
+  });
+
+  const vtLayer = new gl.VectorTileLayer("vt", {
+    urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
+    style: "{res}/styles/maptalks-common/style.json",
+  });
+
+  const groupLayer = new gl.GroupGLLayer("group", [vtLayer]).addTo(map);
+
+  function add() {
+    if (groupLayer.getLayers().length === 0) {
+      groupLayer.addLayer(vtLayer);
+    }
+  }
+
+  function remove() {
+    groupLayer.removeLayer(vtLayer);
+  }
+
+  const gui = new GUI();
+
+  gui
+    .add({
+      type: "button",
+      text: "添加图层",
+    })
+    .onClick(() => {
+      add();
+    });
+
+  gui
+    .add({
+      type: "button",
+      text: "移除图层",
+    })
+    .onClick(() => {
+      remove();
+    });
+</script>
+
+<div id="map" class="container"></div>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>

@@ -1,0 +1,54 @@
+<div id="map" class="container"></div>
+
+<script type="module">
+  import { Map, Polygon, TileLayer, VectorLayer } from "maptalks";
+
+  import { GUI } from "mt.gui";
+
+  const map = new Map("map", {
+    center: [-0.113049, 51.498568],
+    zoom: 14,
+    baseLayer: new TileLayer("base", {
+      urlTemplate:
+        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+      subdomains: ["a", "b", "c", "d"],
+      attribution:
+        "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+    }),
+    layers: [new VectorLayer("v")],
+  });
+
+  const center = map.getCenter();
+  const polygon = new Polygon(
+    [
+      center.add(-0.005, 0.005),
+      center.add(0.005, 0.005),
+      center.add(0.005, -0.005),
+      center.add(-0.005, -0.005),
+    ],
+    {
+      symbol: {
+        polygonFill: "#fff",
+        polygonOpacity: 0.5,
+      },
+    }
+  );
+  map.getLayer("v").addGeometry(polygon);
+
+  const gui = new GUI();
+  gui
+    .add({
+      type: "button",
+      text: "Fit to extent",
+    })
+    .onClick(() => {
+      // fit map's extent to polygon's
+      // 0 is the zoom offset
+      map.fitExtent(polygon.getExtent(), 0);
+    });
+</script>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>

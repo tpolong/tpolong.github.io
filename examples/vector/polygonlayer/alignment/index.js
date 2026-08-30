@@ -1,0 +1,44 @@
+import * as gl from "gl-layers";
+import * as maptalks from "maptalks";
+
+const map = new maptalks.Map("map", {
+  center: [-0.113049, 51.49856],
+  zoom: 14,
+  baseLayer: new maptalks.TileLayer("base", {
+    urlTemplate: "{urlTemplate}",
+    subdomains: ["a", "b", "c", "d"],
+    attribution: "{attribution}",
+  }),
+});
+
+const layer = new gl.PolygonLayer("polygon");
+
+const polygon = new maptalks.Polygon(
+  [
+    [
+      [-0.131049, 51.498568],
+      [-0.107049, 51.498568],
+      [-0.107049, 51.493568],
+      [-0.131049, 51.493568],
+      [-0.131049, 51.498568],
+    ],
+  ],
+  {
+    symbol: {
+      polygonFill: "rgb(135,196,240)",
+      polygonOpacity: 1,
+      lineColor: "#1bbc9b",
+      lineWidth: 6,
+      lineJoin: "round",
+      lineCap: "round",
+      lineDasharray: null,
+      lineOpacity: 1,
+      textName: "MapTalks",
+      textPitchAlignment: "map",
+      textRotationAlignment: "map",
+    },
+  }
+).addTo(layer);
+
+const groupLayer = new gl.GroupGLLayer("group", [layer]);
+groupLayer.addTo(map);

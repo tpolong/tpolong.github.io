@@ -1,0 +1,87 @@
+<script type="module">
+  import { GeoJSONVectorTileLayer, GroupGLLayer } from "gl-layers";
+  import { Map, TileLayer } from "maptalks";
+
+  const map = new Map("map", {
+    center: [120.25213143, 30.23139069],
+    zoom: 20,
+    pitch: 45,
+    baseLayer: new TileLayer("base", {
+      urlTemplate:
+        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+      subdomains: ["a", "b", "c", "d"],
+      attribution:
+        "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+    }),
+  });
+
+  const lights = {
+    ambient: {
+      color: [0.2, 0.2, 0.2],
+      exposure: 1.5,
+    },
+    directional: {
+      color: [0.3, 0.3, 0.3],
+      direction: [1, 0, -1],
+    },
+  };
+
+  map.setLights(lights);
+
+  const style = {
+    style: [
+      {
+        filter: true,
+        renderPlugin: {
+          dataConfig: {
+            type: "round-tube",
+            radialSegments: 16,
+            metric: "cm",
+          },
+          sceneConfig: {},
+          type: "tube",
+        },
+        symbol: {
+          lineColor: [1, 1, 1, 1],
+          lineWidth: {
+            type: "identity",
+            property: "断面尺寸",
+          },
+          lineHeight: 60,
+          linePatternFile: "{res}/images/flow.png",
+          linePatternAnimSpeed: 0.1,
+          uvScale: [1, 1],
+          metallicFactor: 0,
+          roughnessFactor: 0.3,
+        },
+      },
+    ],
+  };
+
+  const vt = new GeoJSONVectorTileLayer("vt", {
+    data: "{res}/geojson/tube.geojson",
+    style,
+  });
+
+  const sceneConfig = {
+    postProcess: {
+      enable: true,
+      antialias: {
+        enable: true,
+        taa: true,
+      },
+    },
+  };
+  const groupLayer = new GroupGLLayer("group", [vt], {
+    antialias: false,
+    sceneConfig,
+  });
+  groupLayer.addTo(map);
+</script>
+
+<div id="map" class="container"></div>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>

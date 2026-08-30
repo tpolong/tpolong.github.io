@@ -1,0 +1,48 @@
+<div id="map" class="container"></div>
+
+<script type="module">
+  import { Map, Marker, TileLayer, VectorLayer } from "maptalks";
+
+  import { GUI } from "mt.gui";
+
+  const map = new Map("map", {
+    center: [-0.113049, 51.498568],
+    zoom: 14,
+    baseLayer: new TileLayer("base", {
+      // crossOrigin : 'anonymous', // required if renderer is canvas
+      // renderer : 'canvas',
+      urlTemplate:
+        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+      subdomains: ["a", "b", "c", "d"],
+      attribution:
+        "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+    }),
+  });
+
+  new VectorLayer("v", new Marker(map.getCenter())).addTo(map);
+
+  // Export map to an image
+  // External image(tiles, marker images) hosts need to support CORS
+  function save() {
+    const data = map.toDataURL({
+      mimeType: "image/jpeg", // or 'image/png'
+      save: true, // to pop a save dialog
+      fileName: "map", // file name
+    });
+  }
+
+  const gui = new GUI();
+  gui
+    .add({
+      type: "button",
+      text: "Export image",
+    })
+    .onClick(() => {
+      save();
+    });
+</script>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>

@@ -1,0 +1,27 @@
+<div id="map" class="container"></div>
+
+<script type="module">
+  import { Map, Marker, TileLayer, VectorLayer } from "maptalks";
+
+  const map = new Map("map", {
+    center: [-0.113049, 51.498568],
+    zoom: 14,
+    devicePixelRatio: 2,
+    baseLayer: new TileLayer("base", {
+      urlTemplate:
+        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+      subdomains: ["a", "b", "c", "d"],
+      attribution:
+        "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+    }),
+  });
+
+  const layer = new VectorLayer("layer").addTo(map);
+  const marker = new Marker(map.getCenter());
+  marker.addTo(layer);
+</script>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>
