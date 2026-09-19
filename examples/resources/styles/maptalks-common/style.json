@@ -2167,7 +2167,7 @@
       },
       "symbol": {
         "visible": true,
-        "markerFile": "/resources/styles/maptalks-common/1.svg",
+        "markerFile": "/examples/resources/styles/maptalks-common/1.svg",
         "markerOpacity": 1,
         "markerTextFitPadding": [1, 1, 1, 1],
         "markerTextFit": "both",
@@ -2208,7 +2208,7 @@
       },
       "symbol": {
         "visible": true,
-        "markerFile": "/resources/styles/maptalks-common/2.svg",
+        "markerFile": "/examples/resources/styles/maptalks-common/2.svg",
         "markerOpacity": 1,
         "markerTextFitPadding": [1, 1, 1, 1],
         "markerTextFit": "both",
@@ -2249,7 +2249,7 @@
       },
       "symbol": {
         "visible": true,
-        "markerFile": "/resources/styles/maptalks-common/2.svg",
+        "markerFile": "/examples/resources/styles/maptalks-common/2.svg",
         "markerOpacity": 1,
         "markerTextFitPadding": [1, 1, 1, 1],
         "markerTextFit": "both",

@@ -9680,7 +9680,7 @@
       },
       "symbol": {
         "visible": true,
-        "markerFile": "/resources/styles/mapbox-light/2.svg",
+        "markerFile": "/examples/resources/styles/mapbox-light/2.svg",
         "markerOpacity": 1,
         "markerTextFitPadding": [
           1,
@@ -9771,7 +9771,7 @@
       },
       "symbol": {
         "visible": true,
-        "markerFile": "/resources/styles/mapbox-light/2.svg",
+        "markerFile": "/examples/resources/styles/mapbox-light/2.svg",
         "markerOpacity": 1,
         "markerTextFitPadding": [
           1,

@@ -1,4 +1,6 @@
 <script type="module">
+  import "draco";
+
   import { DrawTool, LineString, Map, VectorLayer } from "maptalks";
   import { FlatInsideMask, Geo3DTilesLayer, GroupGLLayer } from "gl-layers";
 
@@ -132,6 +134,9 @@
   });
 
   drawTool.on("drawend", () => {
+    if (!coordinates.length) {
+      return;
+    }
     coordinates.push(coordinates[0]);
     new LineString(coordinates, {
       symbol: {
@@ -145,7 +150,26 @@
 
   function getPickedCoordinate(coordinate) {
     const identifyData = groupGLLayer.identify(coordinate)[0];
-    return (identifyData && identifyData.coordinate) || coordinate;
+    const picked = (identifyData && identifyData.coordinate) || coordinate;
+    if (!picked) {
+      return null;
+    }
+    // identify 返回的 coordinate 是 [lng, lat, z] 数组（也可能是 Coordinate 对象）。
+    // 个别拾取结果会带非法值（NaN），直接交给几何会抛 "Position is NaN"，
+    // 并让绘制区域出现异常形状；这里过滤非法点，非法 z 则降级为二维点。
+    const x = Array.isArray(picked) ? picked[0] : picked.x;
+    const y = Array.isArray(picked) ? picked[1] : picked.y;
+    const z = Array.isArray(picked) ? picked[2] : picked.z;
+    if (!isFinite(x) || !isFinite(y)) {
+      return null;
+    }
+    if (Array.isArray(picked) && z !== undefined && !isFinite(z)) {
+      return [x, y];
+    }
+    if (!Array.isArray(picked) && z !== undefined && !isFinite(z)) {
+      return { x, y };
+    }
+    return picked;
   }
 
   const gui = new GUI();

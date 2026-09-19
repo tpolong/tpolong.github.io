@@ -1,3 +1,5 @@
+import "draco";
+
 import * as gl from "gl-layers";
 import * as maptalks from "maptalks";
 

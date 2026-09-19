@@ -1,9 +1,12 @@
+import "draco";
+
 import $ from "jquery-ui";
 window.$ = $;
 window.jQuery = $;
 
 import * as gl from "gl-layers";
 import * as maptalks from "maptalks";
+import SunCalc from "suncalc";
 
 const map = new maptalks.Map("map", {
   center: [108.9605239272878, 34.21955775963946],

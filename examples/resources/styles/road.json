@@ -9,8 +9,8 @@
     },
     "symbol": {
       "ssr": true,
-      "texWaveNormal": "/resources/textures/texWaveNormal.png",
-      "texWavePerturbation": "/resources/textures/texWavePerturbation.png",
+      "texWaveNormal": "/examples/resources/textures/texWaveNormal.png",
+      "texWavePerturbation": "/examples/resources/textures/texWavePerturbation.png",
       "waterBaseColor": [0.7254901960784313, 0.8196078431372549, 1, 1],
       "contrast": 1.266,
       "hsv": [0, 0, 0],
@@ -40,18 +40,18 @@
       "ssr": false,
       "polygonOpacity": 1,
       "material": {
-        "baseColorTexture": "/resources/textures/Stylized_15_Grass_basecolor.jpg",
+        "baseColorTexture": "/examples/resources/textures/Stylized_15_Grass_basecolor.jpg",
         "baseColorFactor": [1, 1, 1, 1],
         "hsv": [0, -0.255, 0.383],
         "outputSRGB": 1,
-        "metallicRoughnessTexture": "/resources/textures/Stylized_15_Grass_roughness.jpg",
+        "metallicRoughnessTexture": "/examples/resources/textures/Stylized_15_Grass_roughness.jpg",
         "roughnessFactor": 1,
         "metallicFactor": 1,
-        "normalTexture": "/resources/textures/Stylized_15_Grass_normalOgl.jpg",
+        "normalTexture": "/examples/resources/textures/Stylized_15_Grass_normalOgl.jpg",
         "uvScale": [0.18, 0.18],
         "normalMapFactor": 0.48,
         "normalMapFlipY": 0,
-        "occlusionTexture": "/resources/textures/Stylized_15_Grass_ambientocclusion.jpg"
+        "occlusionTexture": "/examples/resources/textures/Stylized_15_Grass_ambientocclusion.jpg"
       }
     }
   },
@@ -355,7 +355,7 @@
         "metallicFactor": 0,
         "normalMapFactor": 1,
         "normalMapFlipY": 0,
-        "emissiveTexture": "/resources/textures/897.jpg",
+        "emissiveTexture": "/examples/resources/textures/897.jpg",
         "emissiveFactor": [0.9333333333333333, 0.9254901960784314, 0.9607843137254902],
         "emitColorFactor": 0.31,
         "emitMultiplicative": 0
@@ -531,7 +531,7 @@
       "lineCap": "round",
       "lineColor": [1, 1, 1, 1],
       "lineJoin": "round",
-      "linePatternFile": "/resources/patterns/d4b.jpg",
+      "linePatternFile": "/examples/resources/patterns/d4b.jpg",
       "lineJoinPatternMode": 0,
       "lineWidth": {
         "type": "exponential",
@@ -572,7 +572,7 @@
     },
     "symbol": {
       "lineColor": [1, 1, 1, 1],
-      "linePatternFile": "/resources/patterns/d4b.jpg",
+      "linePatternFile": "/examples/resources/patterns/d4b.jpg",
       "lineJoinPatternMode": 0,
       "lineWidth": {
         "type": "exponential",
@@ -650,7 +650,7 @@
         "outputSRGB": 1,
         "roughnessFactor": 1,
         "metallicFactor": 0,
-        "emissiveTexture": "/resources/textures/897.jpg",
+        "emissiveTexture": "/examples/resources/textures/897.jpg",
         "emissiveFactor": [0, 0, 0],
         "emitColorFactor": 5,
         "emitMultiplicative": 0
