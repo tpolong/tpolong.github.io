@@ -14,14 +14,12 @@
     baseLayer: new GroupTileLayer("base", [
       new TileLayer("tile2", {
         urlTemplate:
-          "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
-        subdomains: ["a", "b", "c", "d"],
+          "https://basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
       }),
 
       new TileLayer("boudaries", {
         urlTemplate:
-          "https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png",
-        subdomains: ["a", "b", "c", "d"],
+          "https://basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png",
       }),
     ]),
   });

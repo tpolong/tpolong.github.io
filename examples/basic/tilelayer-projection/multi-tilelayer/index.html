@@ -9,15 +9,13 @@
     pitch: 40,
     baseLayer: new TileLayer("base", {
       urlTemplate:
-        "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
-      subdomains: ["a", "b", "c", "d"],
+        "https://basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
     }),
     // additional TileLayers in create options
     layers: [
       new TileLayer("boudaries", {
         urlTemplate:
-          "https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png",
-        subdomains: ["a", "b", "c", "d"],
+          "https://basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png",
       }),
     ],
   });

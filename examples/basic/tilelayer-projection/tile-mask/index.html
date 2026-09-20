@@ -10,8 +10,7 @@
     pitch: 56,
     baseLayer: new TileLayer("base", {
       urlTemplate:
-        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-      subdomains: ["a", "b", "c", "d"],
+        "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
       attribution:
         "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
     }),
@@ -758,8 +757,7 @@
   const outline = mask.copy();
 
   const maskedLayer = new TileLayer("masked", {
-    urlTemplate: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-    subdomains: ["a", "b", "c", "d"],
+    urlTemplate: "https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
   })
     .setMask(mask) // set boundary as the mask to the tilelayer
     .addTo(map);

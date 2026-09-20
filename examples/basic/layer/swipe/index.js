@@ -11,8 +11,7 @@ const map = new maptalks.Map("map", {
   center: [121.4, 37.5],
   zoom: 13,
   baseLayer: new maptalks.TileLayer("base", {
-    urlTemplate: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-    subdomains: ["a", "b", "c", "d"],
+    urlTemplate: "https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
   }),
   layers: [layer],
 });

@@ -20,8 +20,7 @@ const map = new maptalks.Map("map", {
     }),
     new maptalks.TileLayer("Carto dark", {
       visible: false,
-      urlTemplate: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-      subdomains: ["a", "b", "c", "d"],
+      urlTemplate: "https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
     }),
   ]),
 });
