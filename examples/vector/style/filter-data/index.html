@@ -37,7 +37,7 @@
   const style = [
     {
       // Only data with building layer and Polygon type are displayed
-      // Please refer to the specific description of filter:http://doc.maptalks.com/docs/style/filter/feature-filter/
+      // Please refer to the specific description of filter: /guide/style/feature-filter
       filter: ["all", ["==", "$layer", "building"], ["==", "$type", "Polygon"]],
       renderPlugin: {
         dataConfig: {
