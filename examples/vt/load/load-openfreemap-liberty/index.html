@@ -1,0 +1,42 @@
+<script type="module">
+  import * as gl from "gl-layers";
+  import * as maptalks from "maptalks";
+
+  const map = new maptalks.Map("map", {
+    center: [13.388, 52.517],
+    zoom: 13.5,
+    pitch: 45,
+    bearing: 0,
+  });
+
+  // OpenFreeMap 的矢量瓦片（免费、无需 key），瓦片地址与 MapLibre 用的是同一套。
+  // 注意 /latest/ 这一段不能省：省掉后 .../planet/{z}/{x}/{y}.pbf 会返回 200 + 空响应体，
+  // 地图上只会剩下背景色。也可以先请求 TileJSON（https://tiles.openfreemap.org/planet/latest）
+  // 再取它 tiles[0] 里的带版本号地址。
+  const vt = new gl.VectorTileLayer("vt", {
+    urlTemplate: "https://tiles.openfreemap.org/planet/latest/{z}/{x}/{y}.pbf",
+    maxZoom: 14,
+    // 由 MapLibre 样式（https://tiles.openfreemap.org/styles/liberty）转换而来，
+    // 转换脚本见 /scripts/convert-maplibre-style.mjs
+    style: "{res}/styles/openfreemap/liberty.json",
+  });
+
+  // 原样式里还有一个栅格晕渲图层（natural_earth，z<=6 可见）：VectorTileLayer 只渲染矢量数据，
+  // 这里不单独叠加栅格底图，直接用样式里的 background 颜色作为底色。
+  new gl.GroupGLLayer("gl", [vt]).addTo(map);
+
+  new maptalks.control.Attribution({
+    position: "bottom-right",
+    content:
+      '<a href="https://openfreemap.org" target="_blank">OpenFreeMap</a> © ' +
+      '<a href="https://www.openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
+      'Data from <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>',
+  }).addTo(map);
+</script>
+
+<div id="map" class="container"></div>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>

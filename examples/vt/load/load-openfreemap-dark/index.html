@@ -1,0 +1,39 @@
+<script type="module">
+  import * as gl from "gl-layers";
+  import * as maptalks from "maptalks";
+
+  const map = new maptalks.Map("map", {
+    center: [-73.9857, 40.7484],
+    zoom: 14,
+    pitch: 45,
+    bearing: 0,
+  });
+
+  // OpenFreeMap 的矢量瓦片（免费、无需 key），瓦片地址与 MapLibre 用的是同一套。
+  // 注意 /latest/ 这一段不能省：省掉后 .../planet/{z}/{x}/{y}.pbf 会返回 200 + 空响应体，
+  // 地图上只会剩下背景色。
+  const vt = new gl.VectorTileLayer("vt", {
+    urlTemplate: "https://tiles.openfreemap.org/planet/latest/{z}/{x}/{y}.pbf",
+    maxZoom: 14,
+    // 由 MapLibre 样式（https://tiles.openfreemap.org/styles/dark）转换而来，
+    // 转换脚本见 /scripts/convert-maplibre-style.mjs
+    style: "{res}/styles/openfreemap/dark.json",
+  });
+
+  new gl.GroupGLLayer("gl", [vt]).addTo(map);
+
+  new maptalks.control.Attribution({
+    position: "bottom-right",
+    content:
+      '<a href="https://openfreemap.org" target="_blank">OpenFreeMap</a> © ' +
+      '<a href="https://www.openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
+      'Data from <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>',
+  }).addTo(map);
+</script>
+
+<div id="map" class="container"></div>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>
