@@ -4,14 +4,14 @@
   import { Map, SpatialReference, TileLayer } from "maptalks";
 
   const url =
-    "https://t0.tianditu.gov.cn/vec_c/wmts?request=GetCapabilities&service=wmts&tk=6901643c38b65f1f9770196343cf72b2";
+    "https://t0.tianditu.gov.cn/vec_c/wmts?request=GetCapabilities&service=wmts&tk=75be8b6b35685dc98d080f13e02f0d4e";
 
   SpatialReference.loadWMTS(url, (err, conf) => {
     if (err) {
       throw new Error(err);
     }
     const params = conf[0];
-    params.urlTemplate += "&tk=6901643c38b65f1f9770196343cf72b2";
+    params.urlTemplate += "&tk=75be8b6b35685dc98d080f13e02f0d4e";
     let spatialReference = params.spatialReference;
     const tileLayer = new TileLayer("tilelayer", params);
     spatialReference = params.spatialReference;
