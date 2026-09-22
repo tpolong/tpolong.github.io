@@ -1,0 +1,38 @@
+<script type="module">
+  import * as gl from "gl-layers";
+  import * as maptalks from "maptalks";
+
+  // Mapbox 公开测试 token（与仓库里既有的 mapbox 示例相同）
+  const token =
+    "pk.eyJ1IjoidGFuZ21pbmd5YW5nIiwiYSI6ImNqczVqZmw2eTBnOW0zem96OHN4Zm41bTgifQ.0EPVaDmwmlr8iXf9cT34Kg";
+
+  const map = new maptalks.Map("map", {
+    center: [13.388, 52.517],
+    zoom: 14.5,
+  });
+
+  const vt = new gl.VectorTileLayer("vt", {
+    // Mapbox 矢量瓦片服务：tileset 取自样式里 composite 源的第一项（mapbox-streets-v8）
+    urlTemplate: `https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token=${token}`,
+    maxZoom: 16,
+    // Mapbox 官方深色底图（mapbox://styles/mapbox/dark-v11）样式转换而来，
+    // 转换脚本见 /scripts/convert-maplibre-style.mjs
+    style: "{res}/styles/mapbox/dark-v11.json",
+  });
+
+  new gl.GroupGLLayer("gl", [vt]).addTo(map);
+
+  new maptalks.control.Attribution({
+    position: "bottom-right",
+    content:
+      '© <a href="https://www.mapbox.com/about/maps/" target="_blank">Mapbox</a> ' +
+      '© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>',
+  }).addTo(map);
+</script>
+
+<div id="map" class="container"></div>
+
+<style>
+  @import "https://maptalks.com/api/maptalks.css";
+  @import "./index.css";
+</style>
