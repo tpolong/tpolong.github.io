@@ -7,6 +7,13 @@
     zoom: 13.5,
   });
 
+  // 样式（由 https://tiles.openfreemap.org/styles/liberty 转换而来，脚本见
+  // /scripts/convert-maplibre-style.mjs）里带 sprite 图集，图标用 markerFile: "$<前缀><名字>" 引用。
+  // 注意：CDN 上的 maptalks 目前还不会自动加载 style.sprites（更新的版本已支持），
+  // 所以这里手动把图集注入 ResourceProxy，否则图标会报 failed loading icon 而画不出来。
+  const style = await fetch("{res}/styles/openfreemap/liberty.json").then((r) => r.json());
+  await Promise.all((style.sprites || []).map((sprite) => maptalks.ResourceProxy.loadSprite(sprite)));
+
   // OpenFreeMap 的矢量瓦片（免费、无需 key），瓦片地址与 MapLibre 用的是同一套。
   // 注意 /latest/ 这一段不能省：省掉后 .../planet/{z}/{x}/{y}.pbf 会返回 200 + 空响应体，
   // 地图上只会剩下背景色。也可以先请求 TileJSON（https://tiles.openfreemap.org/planet/latest）
@@ -14,9 +21,7 @@
   const vt = new gl.VectorTileLayer("vt", {
     urlTemplate: "https://tiles.openfreemap.org/planet/latest/{z}/{x}/{y}.pbf",
     maxZoom: 14,
-    // 由 MapLibre 样式（https://tiles.openfreemap.org/styles/liberty）转换而来，
-    // 转换脚本见 /scripts/convert-maplibre-style.mjs
-    style: "{res}/styles/openfreemap/liberty.json",
+    style,
   });
 
   // 原样式里还有一个栅格晕渲图层（natural_earth，z<=6 可见）：VectorTileLayer 只渲染矢量数据，

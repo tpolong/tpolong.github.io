@@ -11,13 +11,18 @@
     zoom: 15.5,
   });
 
+  // 样式（由 mapbox://styles/mapbox/streets-v12 转换而来，脚本见 /scripts/convert-maplibre-style.mjs）
+  // 里带 sprite 图集，POI / 单行道箭头 / 公路盾牌等图标用 markerFile: "$<前缀><名字>" 引用。
+  // 注意：CDN 上的 maptalks 目前还不会自动加载 style.sprites（更新的版本已支持），
+  // 所以这里手动把图集注入 ResourceProxy，否则图标会报 failed loading icon 而画不出来。
+  const style = await fetch("{res}/styles/mapbox/streets-v12.json").then((r) => r.json());
+  await Promise.all((style.sprites || []).map((sprite) => maptalks.ResourceProxy.loadSprite(sprite)));
+
   const vt = new gl.VectorTileLayer("vt", {
     // Mapbox 矢量瓦片服务：tileset 取自样式里 composite 源的第一项（mapbox-streets-v8）
     urlTemplate: `https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token=${token}`,
     maxZoom: 16,
-    // Mapbox GL JS 指南（mapbox://styles/mapbox/streets-v12）样式转换而来，
-    // 转换脚本见 /scripts/convert-maplibre-style.mjs
-    style: "{res}/styles/mapbox/streets-v12.json",
+    style,
   });
 
   new gl.GroupGLLayer("gl", [vt]).addTo(map);
