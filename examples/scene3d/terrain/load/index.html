@@ -63,7 +63,7 @@
         projection: "EPSG:3857",
       },
       urlTemplate:
-        "http://webst{s}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}",
+        "https://webst0{s}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}",
       subdomains: ["01", "02", "03", "04"],
       offset: function (z) {
         const center = map.getCenter();
@@ -75,7 +75,7 @@
         return offset._round().toArray();
       },
       attribution:
-        '&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>',
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>',
     }),
   ];
 
@@ -113,6 +113,6 @@
 </script>
 
 <style>
-  @import "https://maptalks.com/api/maptalks.css";
+  @import "https://unpkg.com/maptalks/dist/maptalks.css";
   @import "./index.css";
 </style>

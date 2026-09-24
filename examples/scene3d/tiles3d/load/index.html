@@ -33,7 +33,7 @@
   const layer = new Geo3DTilesLayer("3dtiles", {
     services: [
       {
-        url: "http://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json",
+        url: "https://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json",
         maximumScreenSpaceError: 16.0,
         heightOffset: -400,
       },
@@ -101,6 +101,6 @@
 <div id="map" class="container"></div>
 
 <style>
-  @import "https://maptalks.com/api/maptalks.css";
+  @import "https://unpkg.com/maptalks/dist/maptalks.css";
   @import "./index.css";
 </style>

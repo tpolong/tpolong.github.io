@@ -19,14 +19,14 @@
       urlTemplate:
         "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
       attribution:
-        "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+        "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
     }),
   });
 
   const layer = new Geo3DTilesLayer("3dtiles", {
     services: [
       {
-        url: "http://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json",
+        url: "https://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json",
         maximumScreenSpaceError: 1.0,
         pointOpacity: 0.5,
         pointSize: 3,
@@ -237,6 +237,6 @@
 <div id="map" class="container"></div>
 
 <style>
-  @import "https://maptalks.com/api/maptalks.css";
+  @import "https://unpkg.com/maptalks/dist/maptalks.css";
   @import "./index.css";
 </style>

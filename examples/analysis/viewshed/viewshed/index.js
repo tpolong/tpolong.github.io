@@ -31,7 +31,7 @@ const map = new maptalks.Map("map", {
 const layer = new gl.Geo3DTilesLayer("3dtiles", {
   services: [
     {
-      url: "http://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json",
+      url: "https://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json",
 
       maximumScreenSpaceError: 1.0,
       pointOpacity: 0.5,

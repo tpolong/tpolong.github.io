@@ -8,7 +8,7 @@ const mapJSON = {
     type: "TileLayer",
     id: "base",
     options: {
-      urlTemplate: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      urlTemplate: "https://{s}.tile.osm.org/{z}/{x}/{y}.png",
       subdomains: ["a", "b", "c"],
     },
   },

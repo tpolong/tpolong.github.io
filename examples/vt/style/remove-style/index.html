@@ -49,7 +49,7 @@
   ];
 
   const vt = new gl.VectorTileLayer("vt", {
-    urlTemplate: "http://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
+    urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
     style,
   });
 
@@ -84,6 +84,6 @@
 <div id="map" class="container"></div>
 
 <style>
-  @import "https://maptalks.com/api/maptalks.css";
+  @import "https://unpkg.com/maptalks/dist/maptalks.css";
   @import "./index.css";
 </style>

@@ -46,7 +46,7 @@
           "type": "VectorTileLayer",
           "id": "vt0",
           "options": {
-            "urlTemplate": "http://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
+            "urlTemplate": "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
             "features": true,
             "visible": true,
             "style": {

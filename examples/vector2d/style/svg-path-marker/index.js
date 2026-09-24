@@ -1,4 +1,4 @@
-// SVG path from http://dmitrybaranovskiy.github.io/raphael/tiger.html
+// SVG path from https://dmitrybaranovskiy.github.io/raphael/tiger.html
 // Licensed under the MIT (http://raphaeljs.com/license.html) license.
 
 const map = new maptalks.Map("map", {

@@ -20,10 +20,10 @@ const mapBD = new maptalks.Map("map-bd09", {
   },
   baseLayer: new maptalks.TileLayer("base", {
     urlTemplate:
-      "http://online{s}.map.bdimg.com/tile/?qt=tile&x={x}&y={y}&z={z}&styles=pl",
+      "https://maponline{s}.bdimg.com/tile/?qt=tile&x={x}&y={y}&z={z}&styles=pl",
     subdomains: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     attribution:
-      '&copy; <a target="_blank" href="http://map.baidu.com">Baidu</a>',
+      '&copy; <a target="_blank" href="https://map.baidu.com">Baidu</a>',
   }),
 });
 
@@ -39,16 +39,16 @@ const map4326 = new maptalks.Map("map-4326", {
     tileSystem: [1, -1, -180, 90],
     crossOrigin: "Anonymous",
     urlTemplate:
-      "http://t{s}.tianditu.com/DataServer?T=vec_c&x={x}&y={y}&l={z}",
+      "https://t{s}.tianditu.gov.cn/vec_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=75be8b6b35685dc98d080f13e02f0d4e",
     subdomains: ["1", "2", "3", "4", "5"],
     attribution:
-      '&copy; <a target="_blank" href="http://www.tianditu.cn">Tianditu</a>',
+      '&copy; <a target="_blank" href="https://www.tianditu.gov.cn">Tianditu</a>',
   }),
   layers: [
     new maptalks.TileLayer("road", {
       crossOrigin: "Anonymous",
       urlTemplate:
-        "http://t{s}.tianditu.com/DataServer?T=cva_c&x={x}&y={y}&l={z}",
+        "https://t{s}.tianditu.gov.cn/cva_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=75be8b6b35685dc98d080f13e02f0d4e",
       subdomains: ["1", "2", "3", "4", "5"],
       opacity: 1,
     }),
