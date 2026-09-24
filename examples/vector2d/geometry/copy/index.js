@@ -20,7 +20,7 @@ const rect = new maptalks.Rectangle([-0.121049, 51.50656], 800, 600, {
   },
 }).addTo(layer);
 
-const counter = 1;
+let counter = 1;
 function copy() {
   // copy with translation of [0.003, -0.003]
   rect
