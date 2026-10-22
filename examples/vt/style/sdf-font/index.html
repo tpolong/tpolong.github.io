@@ -1,0 +1,65 @@
+<script type="module">
+  import * as gl from "gl-layers";
+  import * as maptalks from "maptalks";
+
+  // 远程 SDF 字形服务：Mapbox glyph PBF 协议，{fontstack} / {range} 是占位符。
+  // OpenFreeMap 免费公开；Noto Sans Regular 同时包含 Latin 与 CJK 字形。
+  const SDF_URL = "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf";
+
+  const map = new maptalks.Map("map", {
+    center: [13.388, 52.517],
+    zoom: 13.5,
+  });
+
+  // 直接用转换好的 Liberty 样式（含完整底图与地名/路名标注），
+  // 只把文字条目的字体改成 OpenFreeMap 上存在的 Noto Sans Regular，
+  // 好让下面的 sdfURL（按 {fontstack} 取字形）能命中。
+  const style = await fetch("{res}/styles/openfreemap/liberty.json").then((r) => r.json());
+  // 注意：icon 类插件也可能带 textName，凡是画文字的条目都要指定字体
+  for (const entry of style.style || []) {
+    if (entry.symbol?.textName) {
+      entry.symbol.textFaceName = "Noto Sans Regular";
+    }
+  }
+
+  const createLayer = (useSdf) =>
+    new gl.VectorTileLayer("vt", {
+      urlTemplate: "https://tiles.openfreemap.org/planet/latest/{z}/{x}/{y}.pbf",
+      maxZoom: 14,
+      style,
+      ...(useSdf ? { sdfURL: SDF_URL } : {}),
+    });
+
+  let layer = createLayer(true);
+  const group = new gl.GroupGLLayer("gl", [layer]).addTo(map);
+
+  // 切换：远程 SDF ↔ 浏览器本地字形（TinySDF）
+  const panel = document.createElement("div");
+  panel.className = "panel";
+  panel.innerHTML = `
+    <label><input type="checkbox" checked> 使用远程 SDF 字体（sdfURL）</label>
+    <p>关闭后退回浏览器本地字形生成。<code>sdfURL</code> 指向 Mapbox glyph PBF 服务，
+      复用预生成的字形（含中文等多语言字符），避免每个浏览器各自栅格化。</p>`;
+  document.body.appendChild(panel);
+  panel.querySelector("input").addEventListener("change", (e) => {
+    group.removeLayer(layer);
+    layer.remove();
+    layer = createLayer(e.target.checked);
+    group.addLayer(layer);
+  });
+
+  new maptalks.control.Attribution({
+    position: "bottom-right",
+    content:
+      '<a href="https://openfreemap.org" target="_blank">OpenFreeMap</a> © ' +
+      '<a href="https://www.openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
+      'Data from <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>',
+  }).addTo(map);
+</script>
+
+<div id="map" class="container"></div>
+
+<style>
+  @import "https://unpkg.com/maptalks/dist/maptalks.css";
+  @import "./index.css";
+</style>

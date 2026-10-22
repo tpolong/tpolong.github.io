@@ -1,0 +1,91 @@
+<script type="module">
+  import * as gl from "gl-layers";
+  import * as maptalks from "maptalks";
+
+  const map = new maptalks.Map("map", {
+    center: [116.3975, 39.9092],
+    zoom: 17.6,
+    pitch: 75,
+    bearing: 10,
+    baseLayer: new maptalks.TileLayer("base", {
+      urlTemplate:
+        "https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",
+      subdomains: ["1", "2", "3", "4"],
+      attribution: "© 高德地图",
+    }),
+  });
+
+  // 每个顶点自带高度（坐标第三位 z）：0 → 40 → 80 → 40，形成带高差的屋面
+  const geojson = {
+    type: "Feature",
+    properties: { height: 20 },
+    geometry: {
+      type: "Polygon",
+      coordinates: [
+        [
+          [116.3965, 39.908, 0],
+          [116.3985, 39.908, 40],
+          [116.3985, 39.9094, 80],
+          [116.3965, 39.9094, 40],
+          [116.3965, 39.908, 0],
+        ],
+      ],
+    },
+  };
+
+  const createLayer = (perPositionHeight) => {
+    const layer = new gl.ExtrudePolygonLayer("extrude", {
+      dataConfig: {
+        type: "3d-extrusion",
+        heightProperty: "height",
+        altitudeScale: 1,
+        top: true,
+        side: true,
+        defaultAltitude: perPositionHeight ? 0 : 40,
+        perPositionHeight,
+      },
+      material: {
+        baseColorFactor: [0.28, 0.62, 0.92, 1],
+        roughnessFactor: 0.5,
+        metalnessFactor: 0.05,
+      },
+      sideMaterial: {
+        baseColorFactor: [0.16, 0.38, 0.62, 1],
+        roughnessFactor: 0.7,
+      },
+    });
+    const polygon = maptalks.GeoJSON.toGeometry(geojson);
+    polygon.setSymbol({
+      polygonFill: "#ffffff",
+      topPolygonFill: "#eaf4ff",
+      bottomPolygonFill: "#0b2c4d",
+    });
+    layer.addGeometry(polygon);
+    return layer;
+  };
+
+  const group = new gl.GroupGLLayer("group", []).addTo(map);
+  let layer = createLayer(true);
+  layer.addTo(group);
+
+  const panel = document.createElement("div");
+  panel.className = "panel";
+  panel.innerHTML = `
+    <label><input type="checkbox" checked> 逐顶点高度（perPositionHeight）</label>
+    <p>开启时每个顶点按自身 z 值拉伸，形成斜面屋顶；关闭时整块按
+      <code>defaultAltitude</code> 拉成平顶。</p>`;
+  document.body.appendChild(panel);
+  panel.querySelector("input").addEventListener("change", (e) => {
+    group.removeLayer(layer);
+    layer.remove();
+    layer = createLayer(e.target.checked);
+    layer.addTo(group);
+  });
+</script>
+
+<div id="map" class="container"></div>
+
+<style>
+  @import "https://unpkg.com/maptalks/dist/maptalks.css";
+  @import "./index.css";
+</style>
